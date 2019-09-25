@@ -28,9 +28,8 @@ public class IrctcLoginPage {
 		return element;
 	}
 	
-	public static WebElement getSignInButton (WebDriver driver) {
-		//To-Do - Use a better element identifier
-		element = driver.findElement(By.xpath("//*[@id=\"login_header_disable\"]/div/div[2]/div[2]/div/div[2]/div[2]/div[2]/form/button"));
+	public static WebElement getSignInButton (WebDriver driver) {		
+		element = driver.findElement(By.xpath("//button[text()=\"SIGN IN\"]"));
 		return element;
 	}
 	

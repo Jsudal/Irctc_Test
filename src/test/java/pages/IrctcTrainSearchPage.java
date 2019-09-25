@@ -19,14 +19,14 @@ public class IrctcTrainSearchPage {
 	}
 	
 	public static WebElement getDateField(WebDriver driver) {
-		//To-Do - Use a better element identifier
-		element = driver.findElement(By.xpath("//*[@id=\"divMain\"]/div/app-main-page/div[1]/div/div[1]/div/div/div[1]/div/app-jp-input/div[3]/form/div[3]/p-calendar/span/input"));
+		element = driver.findElement(By.xpath("//input[contains(@placeholder,\"Journey Date\")]"));
 		return element;
 	}
 	
 	public static WebElement getFindTrainsButton(WebDriver driver) {
-		//To-Do - Use a better element identifier
-		element = driver.findElement(By.xpath("//*[@id=\"divMain\"]/div/app-main-page/div[1]/div/div[1]/div/div/div[1]/div/app-jp-input/div[3]/form/div[7]/button"));
+		String button_name = "Find trains";
+		element = driver.findElement(By.xpath("//button[text()=\"Find trains\"]"));
+		//element = driver.findElement(By.xpath("//button[text()='"+button_name+"']")); // Working
 		return element;
 	}
 	

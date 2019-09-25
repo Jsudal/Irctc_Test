@@ -17,11 +17,13 @@ Scenario Outline: Login and Book tickets in Irctc Site
 	And I input "To" as "<Destination>"
 	#And I input "Date" as "<Date>"
 	And I click on "Find_Trains" button
+	And I click on "Check_Availability" button of train number "<Train_Number>"
+	And I click on "Book Tickets" button for date "<Date>"
 
 Examples:
 
-| Url                     | Origin | Destination | Date       | Train_Number | Passengers_Name                |
-| https://www.irctc.co.in | Erode  | Tuticorin   | 07-10-2019 | 22670        | Sudalaimani, Susila, Jayakumar |
+| Url                     | Origin | Destination | Date        | Train_Number | Passengers_Name                |
+| https://www.irctc.co.in | Erode  | Tuticorin   | 30 Sep 2019 | 22670        | Sudalaimani, Susila, Jayakumar |
 
 	
 @Book_Tickets_From_Home_Page
@@ -32,10 +34,10 @@ Scenario Outline: Verify ticket booking in Irctc
 	And I input "To" as "<Destination>"
 	#And I input "Date" as "<Date>"
 	And I click on "Find_Trains" button
-	#And I click on "Check_Availability" button
-	
+	And I click on "Check_Availability" button of train number "<Train_Number>"
+	And I click on "Book Tickets" button for date "<Date>"	
 
 Examples:
 
-| Url                       | Origin  | Destination  | Date        |
-| https://www.irctc.co.in 	| Erode   | Tuticorin    | 07-Oct-2019 |
+| Url                       | Origin  | Destination  | Date        | Train_Number |
+| https://www.irctc.co.in 	| Erode   | Tuticorin    | 30 Sep 2019 | 22670        |
