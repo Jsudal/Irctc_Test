@@ -1,8 +1,5 @@
 package pages;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,8 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class IrctcTrainListPage {
 	private static WebElement element = null;
-	
-	private static List<WebElement> element_list = null;
 
 	public static WebElement getChkAvailabilityButton(WebDriver driver, String train_number) {
 		WebDriverWait wait = new WebDriverWait(driver, 10000, 1000);
