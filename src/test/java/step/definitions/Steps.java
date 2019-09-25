@@ -1,17 +1,15 @@
 package step.definitions;
 
-import javax.swing.JOptionPane;
-
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
+import cucumber.api.java.en.Then;
 import org.junit.Assert;
 import pages.IrctcHomePage;
 import pages.IrctcLoginPage;
@@ -38,23 +36,31 @@ public class Steps {
 	    	IrctcTrainSearchPage.getFindTrainsButton(driver).click();
 	    } else if (button_name.equals("Sign_In")) {
 	    	IrctcLoginPage.getSignInButton(driver).click();
-	    } else if (button_name.equals("Check_Availability")) {
-	    	IrctcTrainListPage.getChkAvailabilityButton(driver).click();
-	    }
+	    }	    	
 	}
-
+	
+	@Given("^I click on \"([^\"]*)\" button of train number \"([^\"]*)\"$")
+	public void i_click_on_button_of_train_number(String button_name, String train_number) throws Throwable {		
+		IrctcTrainListPage.getChkAvailabilityButton(driver, train_number).click();
+	}
+	
+	@Then("^I click on \"([^\"]*)\" button for date \"([^\"]*)\"$")
+	public void i_click_on_button_for_date(String button_name, String travel_date) throws Throwable {		
+		IrctcTrainListPage.getBookNowButton(driver, travel_date).click();
+	}
+	
 	@When("^I input \"([^\"]*)\" as \"([^\"]*)\"$")
 	public void i_input_as(String input_box_name, String input_value) throws Throwable {
 	    
 	    if (input_box_name.equals("From")) {
 	    	WebElement from = IrctcTrainSearchPage.getFromInput(driver);
 	    	from.sendKeys(input_value);
-	    	Thread.sleep(2000);
+	    	Thread.sleep(1000);
 	    	from.sendKeys(Keys.ENTER);
 	    } else if (input_box_name.equals("To")) {
 	    	WebElement to = IrctcTrainSearchPage.getToInput(driver);
 	    	to.sendKeys(input_value);
-	    	Thread.sleep(2000);
+	    	Thread.sleep(1000);
 	    	to.sendKeys(Keys.ENTER);
 	    } else if (input_box_name.equals("Date")) {
 	    	WebElement date_field = IrctcTrainSearchPage.getDateField(driver);
