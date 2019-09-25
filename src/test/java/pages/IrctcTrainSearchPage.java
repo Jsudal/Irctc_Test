@@ -24,12 +24,7 @@ public class IrctcTrainSearchPage {
 	}
 	
 	public static WebElement getFindTrainsButton(WebDriver driver) {
-		String button_name = "Find trains";
 		element = driver.findElement(By.xpath("//button[text()=\"Find trains\"]"));
-		//element = driver.findElement(By.xpath("//button[text()='"+button_name+"']")); // Working
 		return element;
 	}
-	
-	
-	
 }
