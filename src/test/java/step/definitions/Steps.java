@@ -25,12 +25,20 @@ public class Steps {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Jayakumar\\Desktop\\Learning\\Chrome Driver\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.navigate().to(url);
+		driver.get(url);		
+		if (url.equals("https://www.irctc.co.in")) {
+			try {
+				IrctcHomePage.getHomePageAdCloseButton(driver).click();
+			}
+			catch (NoSuchElementException ne) {
+				ne.getSuppressed();
+			}			
+		}
 	}
 
 	@When("^I click on \"([^\"]*)\" button$")
 	public void i_click_on_button(String button_name) throws Throwable {
-	    if (button_name.equals("Login")) {	    	
+	    if (button_name.equals("Login")) {
 	    	IrctcHomePage.getLoginLink(driver).click();
 	    } else if (button_name.equals("Find_Trains")) {
 	    	IrctcTrainSearchPage.getFindTrainsButton(driver).click();
