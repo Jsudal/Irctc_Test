@@ -22,7 +22,7 @@ public class Steps {
 	
 	@Given("^I launch \"([^\"]*)\"$")
 	public void i_launch(String url) throws Throwable {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Jayakumar\\Desktop\\Learning\\Chrome Driver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "Chrome_Driver\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get(url);		
