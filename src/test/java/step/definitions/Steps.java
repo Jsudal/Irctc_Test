@@ -1,4 +1,4 @@
-package step.definitions;
+package test.java.step.definitions;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -11,10 +11,10 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
-import pages.IrctcHomePage;
-import pages.IrctcLoginPage;
-import pages.IrctcTrainListPage;
-import pages.IrctcTrainSearchPage;
+import test.java.pages.IrctcHomePage;
+import test.java.pages.IrctcLoginPage;
+import test.java.pages.IrctcTrainListPage;
+import test.java.pages.IrctcTrainSearchPage;
 
 public class Steps {
 	

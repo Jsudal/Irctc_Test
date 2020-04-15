@@ -1,4 +1,4 @@
-package concepts;
+package test.java.concepts;
 
 import javax.swing.*;
 
