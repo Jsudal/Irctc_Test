@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
@@ -19,6 +20,8 @@ import test.java.pages.IrctcTrainSearchPage;
 public class Steps {
 	
 	WebDriver driver = null;
+	
+	IrctcLoginPage LoginPage = null;
 	
 	@Given("^I launch \"([^\"]*)\"$")
 	public void i_launch(String url) throws Throwable {
@@ -34,6 +37,7 @@ public class Steps {
 				ne.getSuppressed();
 			}			
 		}
+		LoginPage = PageFactory.initElements(driver, IrctcLoginPage.class);
 	}
 
 	@When("^I click on \"([^\"]*)\" button$")
@@ -43,7 +47,7 @@ public class Steps {
 	    } else if (button_name.equals("Find_Trains")) {
 	    	IrctcTrainSearchPage.getFindTrainsButton(driver).click();
 	    } else if (button_name.equals("Sign_In")) {
-	    	IrctcLoginPage.getSignInButton(driver).click();
+	    	LoginPage.signInButton.click();
 	    }	    	
 	}
 	
@@ -91,23 +95,23 @@ public class Steps {
 			isPassword = true;
 			String prompt_message = "Please enter your Irctc password:";
 			String pwd = Utilities.displayOptionDialog(prompt_message,isPassword);
-	    	IrctcLoginPage.getPasswordInput(driver).sendKeys(pwd);
+			LoginPage.passwordInput.sendKeys(pwd);
 	    } else if (input_box_name.equals("Captcha")) {
 	    	isPassword = false;
 	    	String prompt_message = "Please enter the Captcha displayed:";
 	    	String captcha = Utilities.displayOptionDialog(prompt_message,isPassword);
 	    	try {
-	    		IrctcLoginPage.getNlpCaptchaInput(driver).sendKeys(captcha);
+	    		LoginPage.nlpCaptchaInput.sendKeys(captcha);
 	    	}
 	    	catch (NoSuchElementException ne) {
 	    		ne.getSuppressed();
-	    		IrctcLoginPage.getCaptchaInput(driver).sendKeys(captcha);
+	    		LoginPage.captchaInput.sendKeys(captcha);
 	    	}	    	
 	    } else if (input_box_name.equals("UserName")) {
 	    	isPassword = false;
 	    	String prompt_message = "Please enter your Irctc UserName:";	    	
-	    	String user_name = Utilities.displayOptionDialog(prompt_message,isPassword);	    	
-	    	IrctcLoginPage.getUserNameInput(driver).sendKeys(user_name);
+	    	String user_name = Utilities.displayOptionDialog(prompt_message,isPassword);
+	    	LoginPage.userNameInput.sendKeys(user_name);
 	    }	    
 	}
 }
