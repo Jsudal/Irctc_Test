@@ -1,38 +1,30 @@
 package test.java.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 public class IrctcLoginPage {
-
-	private static WebElement element = null;
 	
-	public static WebElement getUserNameInput (WebDriver driver) {
-		element = driver.findElement(By.id("userId"));
-		return element;
-	}
+	final WebDriver driver;
 	
-	public static WebElement getPasswordInput (WebDriver driver) {
-		element = driver.findElement(By.id("pwd"));
-		return element;
-	}
+	@FindBy(how = How.ID, using = "userId")	 
+	public WebElement userNameInput;
 	
-	public static WebElement getNlpCaptchaInput (WebDriver driver) {
-		element = driver.findElement(By.id("nlpAnswer"));
-		return element;
-	}
+	@FindBy(how = How.ID, using = "pwd")	 
+	public WebElement passwordInput;
 	
-	public static WebElement getCaptchaInput (WebDriver driver) {
-		element = driver.findElement(By.id("captcha"));
-		return element;
-	}
+	@FindBy(how = How.ID, using = "nlpAnswer")	 
+	public WebElement nlpCaptchaInput;
 	
-	public static WebElement getSignInButton (WebDriver driver) {		
-		element = driver.findElement(By.xpath("//button[text()=\"SIGN IN\"]"));
-		return element;
-	}
+	@FindBy(how = How.ID, using = "captcha")	 
+	public WebElement captchaInput;
 	
+	@FindBy(how = How.XPATH, using = ".//button[text()='SIGN IN']")	 
+	public WebElement signInButton;
 	
-	
+	public IrctcLoginPage(WebDriver driver) {
+	    this.driver = driver;
+	}			
 }
