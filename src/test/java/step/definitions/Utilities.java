@@ -1,4 +1,4 @@
-package step.definitions;
+package test.java.step.definitions;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
