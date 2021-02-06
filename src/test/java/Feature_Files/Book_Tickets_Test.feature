@@ -8,22 +8,25 @@ I should be able to login and book tickets through Irctc Site
 Scenario Outline: Login and Book tickets in Irctc Site
 
 	Given I launch "<Url>"
-	When I click on "Login" button
+  When I click on "Login" button
 	And I input "UserName" at Run time
 	And I input "Password" at Run time
 	And I input "Captcha" at Run time
 	And I click on "Sign_In" button
 	And I input "From" as "<Origin>"
 	And I input "To" as "<Destination>"
-	#And I input "Date" as "<Date>"
-	And I click on "Find_Trains" button
-	And I click on "Check_Availability" button of train number "<Train_Number>"
-	And I click on "Book Tickets" button for date "<Date>"
+	And I click on "Search" button
+	And I select the class as "<Class>" for train number "<Train_Number>"
+	And I click on "Book Now" button of train number "<Train_Number>"
+	And I click on "I Agree" button
+	And I click on "Yes" button
+	Then I land on "Booking" page
+	And I click on "Logout" button
 
 Examples:
 
-| Url                     | Origin | Destination | Date        | Train_Number | Passengers_Name                |
-| https://www.irctc.co.in | Erode  | Tuticorin   | 30 Sep 2019 | 22670        | Sudalaimani, Susila, Jayakumar |
+| Url                     | Origin | Destination | Train_Number | Class        |
+| https://www.irctc.co.in | Erode  | Chennai     | 02640        | AC 3 Tier    |
 
 	
 @Book_Tickets_From_Home_Page
@@ -31,13 +34,12 @@ Scenario Outline: Verify ticket booking in Irctc
 
 	Given I launch "<Url>"
 	And I input "From" as "<Origin>"
-	And I input "To" as "<Destination>"
-	#And I input "Date" as "<Date>"
-	And I click on "Find_Trains" button
-	And I click on "Check_Availability" button of train number "<Train_Number>"
+	And I input "To" as "<Destination>"	
+	And I click on "Search" button
+	And I click on "Book Now" button of train number "<Train_Number>"
 	And I click on "Book Tickets" button for date "<Date>"	
 
 Examples:
 
-| Url                       | Origin  | Destination  | Date        | Train_Number |
-| https://www.irctc.co.in 	| Erode   | Tuticorin    | 30 Sep 2019 | 22670        |
+| Url                       | Origin  | Destination  | Train_Number |
+| https://www.irctc.co.in 	| Erode   | Tuticorin    | 22670        |

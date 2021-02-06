@@ -9,22 +9,43 @@ public class IrctcLoginPage {
 	
 	final WebDriver driver;
 	
-	@FindBy(how = How.ID, using = "userId")	 
-	public WebElement userNameInput;
-	
-	@FindBy(how = How.ID, using = "pwd")	 
-	public WebElement passwordInput;
-	
-	@FindBy(how = How.ID, using = "nlpAnswer")	 
-	public WebElement nlpCaptchaInput;
-	
-	@FindBy(how = How.ID, using = "captcha")	 
-	public WebElement captchaInput;
-	
-	@FindBy(how = How.XPATH, using = ".//button[text()='SIGN IN']")	 
-	public WebElement signInButton;
-	
 	public IrctcLoginPage(WebDriver driver) {
 	    this.driver = driver;
-	}			
+	}
+	
+	@FindBy(how = How.ID, using = "userId")	 
+	private WebElement userNameInput;
+	
+	@FindBy(how = How.ID, using = "pwd")	 
+	private WebElement passwordInput;
+	
+	@FindBy(how = How.ID, using = "nlpAnswer")	 
+	private WebElement nlpCaptchaInput;
+	
+	@FindBy(how = How.ID, using = "captcha")	 
+	private WebElement captchaInput;
+	
+	@FindBy(how = How.XPATH, using = "//button[text()='SIGN IN']")	 
+	private WebElement signInButton;
+	
+	public void clickSignInButton () {
+		signInButton.click();
+	}
+	
+	public void enterUserNameInput (String user_name) {
+		userNameInput.sendKeys(user_name);
+	}
+	
+	public void enterPasswordInput (String pwd) {
+		passwordInput.sendKeys(pwd);
+	}
+	
+	public void enterNlpCaptchaInput (String captcha) {
+		nlpCaptchaInput.sendKeys(captcha);
+	}
+	
+	public void enterCaptchaInput (String captcha) {
+		captchaInput.sendKeys(captcha);
+	}
+		
 }
