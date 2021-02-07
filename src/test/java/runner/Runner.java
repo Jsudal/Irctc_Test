@@ -1,10 +1,11 @@
 package test.java.runner;
-import cucumber.api.junit.Cucumber;
-import cucumber.api.CucumberOptions;
+
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = {"src/test/java/Feature_Files"}, glue = {"test.java.step.definitions"},
-plugin = {"pretty", "html:target/cucumber-reports"}, monochrome = true, tags = {"@Login_And_Book_Tickets"})
+plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}, monochrome = true, tags = "@Validate_Irctc_Site")
 public class Runner {
 }
