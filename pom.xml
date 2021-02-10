@@ -57,7 +57,28 @@
       <artifactId>extentreports-cucumber6-adapter</artifactId>
       <version>2.6.0</version>
 	</dependency>
-		
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+	<dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.12</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.json/json -->
+	<dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20200518</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
+	<dependency>
+      <groupId>com.jayway.jsonpath</groupId>
+      <artifactId>json-path</artifactId>
+      <version>2.5.0</version>
+	</dependency>
+	
   </dependencies>
   
 </project>
