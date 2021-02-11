@@ -4,7 +4,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import test.java.pages.ApiTests;
 import io.cucumber.java.en.Then;
-import org.junit.Assert;
 
 public class ApiSteps {	
 	

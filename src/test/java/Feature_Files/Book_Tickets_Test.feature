@@ -7,7 +7,7 @@ I should be able to login, search for Trains and navigate to booking page
 @Login_Successfully_And_Logout
 Scenario Outline: Login successfully using valid credentials and logout
 
-	Given I launch "<Url>"
+	Given I launch Irctc Site 
   When I click on "Login" button
 	And I input "UserName" at Run time
 	And I input "Password" at Run time
@@ -24,7 +24,7 @@ Examples:
 @Login_Search_And_Navigate_To_Book_Tickets
 Scenario Outline: Login, Search for Trains, Navigate to Booking Page and Logout
 
-	Given I launch "<Url>"
+	Given I launch Irctc Site
   When I click on "Login" button
 	And I input "UserName" at Run time
 	And I input "Password" at Run time
@@ -43,4 +43,4 @@ Scenario Outline: Login, Search for Trains, Navigate to Booking Page and Logout
 Examples:
 
 | Url                     | Origin | Destination | Train_Number | Class        |
-| https://www.irctc.co.in | Erode  | Chennai     | 02650        | AC 2 Tier    |
+| https://www.irctc.co.in | Erode  | Chennai     | 02650        | Sleeper      |
