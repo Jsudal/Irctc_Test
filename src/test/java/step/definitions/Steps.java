@@ -24,27 +24,34 @@ public class Steps {
 	IrctcBookingPage trainBookingPage;
 	IrctcLoginPage LoginPage;
 	
-	@Given("^I launch \"([^\"]*)\"$")
-	public void i_launch(String url) throws Throwable {
-		System.setProperty("webdriver.chrome.driver", "Chrome_Driver\\chromedriver.exe");
+	String config_file_name = "src/test/resources/config.properties";
+	
+	@Given("^I launch Irctc Site$")
+	public void i_launch_irctc_site() throws Throwable {
+		
+		String chrome_driver_path = Utilities.getPropertyFromConfigFile(config_file_name, "chrome.driver.location");			
+		String irctc_url = Utilities.getPropertyFromConfigFile(config_file_name, "irctc.url");
+		
+		System.setProperty("webdriver.chrome.driver", chrome_driver_path);
 		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get(url);		
-		homePage = new IrctcHomePage(driver);		
-		if (url.equals("https://www.irctc.co.in")) {
-			try {							
-				homePage.clickAlertOkButton();
-			}
-			catch (NoSuchElementException ne) {
-				ne.getSuppressed();
-			}			
-			try {							
-				homePage.clickHomePageAdCloseButton();
-			}
-			catch (NoSuchElementException ne) {
-				ne.getSuppressed();
-			}			
+		driver.manage().window().maximize();		
+		
+		driver.get(irctc_url);
+		
+		homePage = new IrctcHomePage(driver);
+		
+		try {							
+			homePage.clickAlertOkButton();
 		}
+		catch (NoSuchElementException ne) {
+			ne.getSuppressed();
+		}			
+		try {							
+			homePage.clickHomePageAdCloseButton();
+		}
+		catch (NoSuchElementException ne) {
+			ne.getSuppressed();
+		}					
 		LoginPage = PageFactory.initElements(driver, IrctcLoginPage.class);
 	}
 

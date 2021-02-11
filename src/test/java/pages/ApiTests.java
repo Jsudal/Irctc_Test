@@ -4,6 +4,9 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import com.jayway.jsonpath.JsonPath;
+
+import test.java.step.definitions.Utilities;
+
 import org.junit.Assert;
 
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -18,10 +21,13 @@ public class ApiTests {
 	
 	CloseableHttpResponse httpResponse;
 	
+	String config_file_name = "src/test/resources/config.properties";
+	
 	public void makeGetRequest () throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
-		HttpGet httpGet = new HttpGet("https://reqres.in/api/users?page=2");
+		String api_url = Utilities.getPropertyFromConfigFile(config_file_name, "api.url");
 		
+		HttpGet httpGet = new HttpGet(api_url+"/api/users?page=2");		
 		httpResponse = httpClient.execute(httpGet);
 	}	
 	

@@ -1,5 +1,10 @@
 package test.java.step.definitions;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -40,6 +45,14 @@ public class Utilities {
 			Assert.fail("User not provided the required input(User Name/Password/Captcha) in the Dialog box. Script Execution Terminated.");
 		}
 		return user_input;
+	}
+	
+	public static String getPropertyFromConfigFile (String file_name, String key) throws IOException {
+		Properties prop = new Properties();
+		FileInputStream file_stream = new FileInputStream(file_name);
+		prop.load(file_stream);
+		return(prop.getProperty(key));
+		
 	}
 	
 	public static void main (String[] args) {
